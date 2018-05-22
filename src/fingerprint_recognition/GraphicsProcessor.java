@@ -1,18 +1,20 @@
 package fingerprint_recognition;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GraphicsProcessor {
 
     private int[][] imageArray;
     private int[][] ridgeEndingArray;
     private int[][] ridgeBifurcationArray;
+    private List<Integer> minutiaeList;
     private BufferedImage image;
-    private BufferedImage processedImage;
-    private BufferedImage blurredImage;
-    private BufferedImage binarizedImage;
-    private BufferedImage thinnedImage;
-    private BufferedImage minutiaeImage;
+    private static final int imageWidth = 300;
+    private static final int imageHeight = 400;
+    private static final int windowWidth = 100;
+    private static final int windowHeight = 100;
 
     public GraphicsProcessor(BufferedImage image) {
 
@@ -22,10 +24,11 @@ public class GraphicsProcessor {
         ridgeBifurcationArray = new int[image.getWidth()][image.getHeight()];
         //gaussBlur(5);
         binarize();
-        thin();
-        thin();
-        thin();
+        for(int i = 0; i < 10; i++) {
+            thin();
+        }
         findMinutiae();
+        generateMinutiaeArray();
     }
 
     private void binarize() {
@@ -45,7 +48,6 @@ public class GraphicsProcessor {
         }
 
         // Threshold (binarize) the array, create binarized image
-        binarizedImage = image;
         int avgPixelValue = grayScaleSum / (image.getHeight() * image.getWidth());
         for (int y = 0; y < image.getHeight(); y++) {
             for (int x = 0; x < image.getWidth(); x++) {
@@ -54,7 +56,7 @@ public class GraphicsProcessor {
                 } else {
                     imageArray[x][y] = 0;
                 }
-                binarizedImage.setRGB(x, y, imageArray[x][y]);
+                image.setRGB(x, y, imageArray[x][y]);
             }
         }
     }
@@ -70,7 +72,6 @@ public class GraphicsProcessor {
             imageArray[0][y] = -1;
             imageArray[image.getWidth() - 1][y] = -1;
         }
-        thinnedImage = image;
 
         // Zhang-Suen algorithm
         int numberOfChanges = 1;
@@ -119,7 +120,7 @@ public class GraphicsProcessor {
                             numberOfChanges++;
                         }
                     }
-                    thinnedImage.setRGB(x, y, imageArray[x][y]);
+                    image.setRGB(x, y, imageArray[x][y]);
                 }
             }
         }
@@ -175,10 +176,33 @@ public class GraphicsProcessor {
         }
     }
 
-    private void gaussBlur (float radius) {
+    private void generateMinutiaeArray() {
 
-        // Instantiate blurred image
-        blurredImage = image;
+        minutiaeList = new ArrayList<>();
+        for(int x = 0; x < imageWidth - windowWidth + 1; x += windowWidth) {
+            for(int y = 0; y < imageHeight - windowHeight + 1; y += windowHeight) {
+                minutiaeList.add(calculateSubarraySum(x, y, ridgeEndingArray));
+            }
+        }
+        for(int x = 0; x < imageWidth - windowWidth + 1; x += windowWidth) {
+            for(int y = 0; y < imageHeight - windowHeight + 1; y += windowHeight) {
+                minutiaeList.add(calculateSubarraySum(x, y, ridgeBifurcationArray));
+            }
+        }
+    }
+
+    private int calculateSubarraySum(int x, int y, int[][] array) {
+
+        int sum = 0;
+        for(int i = x; i < x + windowWidth; i++) {
+            for(int j = y; j < y + windowHeight; j++) {
+                sum += array[i][j];
+            }
+        }
+        return sum;
+    }
+
+    private void gaussBlur (float radius) {
 
         // Store original array
         int [][] sourceArray = new int[image.getWidth()][];
@@ -200,7 +224,7 @@ public class GraphicsProcessor {
                         wsum += wght;
                     }
                 imageArray[j][i] = Math.round(val / wsum);
-                blurredImage.setRGB(j, i, imageArray[j][i]);
+                image.setRGB(j, i, imageArray[j][i]);
             }
         }
     }
@@ -213,19 +237,12 @@ public class GraphicsProcessor {
         }
     }
 
-    public BufferedImage getBlurredImage() {
-        return blurredImage;
+    public BufferedImage getImage() {
+        return image;
     }
 
-    public BufferedImage getBinarizedImage() {
-        return binarizedImage;
+    public List<Integer> getMinutiaeList() {
+        return minutiaeList;
     }
 
-    public BufferedImage getThinnedImage() {
-        return thinnedImage;
-    }
-
-    public BufferedImage getMinutiaeImage() {
-        return minutiaeImage;
-    }
 }
