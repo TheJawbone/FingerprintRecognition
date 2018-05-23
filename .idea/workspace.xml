@@ -2,26 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f3a86f1-09a9-44b9-ac82-fbbed75e6ec3" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fingerprint_recognition/Layer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fingerprint_recognition/Node.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fingerprint_recognition/Perceptron.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fingerprint_recognition/SharedTypes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fingerprint_recognition/TrainingSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Dev.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Dev.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/binarized.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fingerprint1.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fingerprint2.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fingerprint3.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fingerprint4.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/GraphicsProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/GraphicsProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/Layer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/Layer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/MainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/MainClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fingerprint_recognition/GraphicsProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fingerprint_recognition/GraphicsProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/Node$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/Node$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/Perceptron.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/Perceptron.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/TrainingSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BIAI_project/fingerprint_recognition/TrainingSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fingerprint_recognition/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fingerprint_recognition/Layer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fingerprint_recognition/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fingerprint_recognition/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thinned.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fingerprint_recognition/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fingerprint_recognition/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fingerprint_recognition/Perceptron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fingerprint_recognition/Perceptron.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fingerprint_recognition/TrainingSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fingerprint_recognition/TrainingSet.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +28,8 @@
       <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="70" column="87" selection-start-line="70" selection-start-column="87" selection-end-line="70" selection-end-column="87" />
+            <state relative-caret-position="269">
+              <caret line="130" column="14" selection-start-line="130" selection-start-column="14" selection-end-line="130" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -48,31 +40,24 @@
       <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="-268">
+              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
               <folding>
-                <element signature="e#2960#2961#0" expanded="true" />
-                <element signature="e#3005#3006#0" expanded="true" />
-                <element signature="e#3043#3044#0" expanded="true" />
-                <element signature="e#3077#3078#0" expanded="true" />
-                <element signature="e#3125#3126#0" expanded="true" />
-                <element signature="e#3171#3172#0" expanded="true" />
-                <element signature="e#3219#3220#0" expanded="true" />
-                <element signature="e#3263#3264#0" expanded="true" />
-                <element signature="e#3309#3310#0" expanded="true" />
-                <element signature="e#3351#3352#0" expanded="true" />
-                <element signature="e#3451#3452#0" expanded="true" />
-                <element signature="e#3472#3473#0" expanded="true" />
+                <element signature="e#3778#3779#0" expanded="true" />
+                <element signature="e#3823#3824#0" expanded="true" />
+                <element signature="e#3861#3862#0" expanded="true" />
+                <element signature="e#3895#3896#0" expanded="true" />
+                <element signature="e#3943#3944#0" expanded="true" />
+                <element signature="e#3983#3984#0" expanded="true" />
+                <element signature="e#4031#4032#0" expanded="true" />
+                <element signature="e#4075#4076#0" expanded="true" />
+                <element signature="e#4121#4122#0" expanded="true" />
+                <element signature="e#4163#4164#0" expanded="true" />
+                <element signature="e#4204#4205#0" expanded="true" />
+                <element signature="e#4239#4240#0" expanded="true" />
+                <element signature="e#4268#4269#0" expanded="true" />
+                <element signature="e#4296#4297#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SharedTypes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/SharedTypes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -80,11 +65,8 @@
       <file leaf-file-name="Perceptron.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/Perceptron.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="375">
+              <caret line="66" column="57" lean-forward="true" selection-start-line="66" selection-start-column="57" selection-end-line="66" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -92,8 +74,8 @@
       <file leaf-file-name="Layer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/Layer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="239">
+              <caret line="41" column="89" selection-start-line="41" selection-start-column="89" selection-end-line="41" selection-end-column="89" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#776#777#0" expanded="true" />
@@ -106,8 +88,8 @@
       <file leaf-file-name="TrainingSet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/TrainingSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <state relative-caret-position="102">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -115,8 +97,8 @@
       <file leaf-file-name="GraphicsProcessor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/GraphicsProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+            <state relative-caret-position="255">
+              <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -140,6 +122,11 @@
       <find>random</find>
       <find>layersize</find>
       <find>trainingsets</find>
+      <find>input</find>
+      <find>inputlayer</find>
+      <find>calculatevalues</find>
+      <find>calculate</find>
+      <find>epoch</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,18 +140,18 @@
         <option value="$PROJECT_DIR$/src/fingerprint_recognition/Threshholder.java" />
         <option value="$PROJECT_DIR$/src/fingerprint_recognition/Network.java" />
         <option value="$PROJECT_DIR$/src/fingerprint_recognition/NeuralNetworkException.java" />
-        <option value="$PROJECT_DIR$/src/fingerprint_recognition/TrainingSet.java" />
         <option value="$PROJECT_DIR$/src/fingerprint_recognition/NodeConnection.java" />
+        <option value="$PROJECT_DIR$/src/fingerprint_recognition/SharedTypes.java" />
+        <option value="$PROJECT_DIR$/src/fingerprint_recognition/TrainingSet.java" />
+        <option value="$PROJECT_DIR$/src/fingerprint_recognition/GraphicsProcessor.java" />
         <option value="$PROJECT_DIR$/src/fingerprint_recognition/Perceptron.java" />
         <option value="$PROJECT_DIR$/src/fingerprint_recognition/Node.java" />
-        <option value="$PROJECT_DIR$/src/fingerprint_recognition/SharedTypes.java" />
         <option value="$PROJECT_DIR$/src/fingerprint_recognition/Layer.java" />
-        <option value="$PROJECT_DIR$/src/fingerprint_recognition/GraphicsProcessor.java" />
         <option value="$PROJECT_DIR$/src/fingerprint_recognition/MainClass.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="220" />
     <option name="y" value="69" />
     <option name="width" value="851" />
@@ -280,7 +267,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -316,22 +303,8 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="46" />
+      <option name="time" value="51" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="imageArray" language="JAVA" />
-        <watch expression="x" language="JAVA" />
-        <watch expression="y" language="JAVA" />
-        <watch expression="image.getWidth()" language="JAVA" />
-        <watch expression="condition1" language="JAVA" />
-        <watch expression="condition2" language="JAVA" />
-        <watch expression="condition3" language="JAVA" />
-        <watch expression="condition4" language="JAVA" />
-        <watch expression="perceptron" />
-        <watch expression="perceptron.inputLayer.nodeList.get(10)" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -398,18 +371,20 @@
         <state relative-caret-position="510">
           <caret line="30" selection-start-line="30" selection-end-line="30" />
           <folding>
-            <element signature="e#2960#2961#0" expanded="true" />
-            <element signature="e#3005#3006#0" expanded="true" />
-            <element signature="e#3043#3044#0" expanded="true" />
-            <element signature="e#3077#3078#0" expanded="true" />
-            <element signature="e#3125#3126#0" expanded="true" />
-            <element signature="e#3171#3172#0" expanded="true" />
-            <element signature="e#3219#3220#0" expanded="true" />
-            <element signature="e#3263#3264#0" expanded="true" />
-            <element signature="e#3309#3310#0" expanded="true" />
-            <element signature="e#3351#3352#0" expanded="true" />
-            <element signature="e#3451#3452#0" expanded="true" />
-            <element signature="e#3472#3473#0" expanded="true" />
+            <element signature="e#3778#3779#0" expanded="true" />
+            <element signature="e#3823#3824#0" expanded="true" />
+            <element signature="e#3861#3862#0" expanded="true" />
+            <element signature="e#3895#3896#0" expanded="true" />
+            <element signature="e#3943#3944#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+            <element signature="e#4031#4032#0" expanded="true" />
+            <element signature="e#4075#4076#0" expanded="true" />
+            <element signature="e#4121#4122#0" expanded="true" />
+            <element signature="e#4163#4164#0" expanded="true" />
+            <element signature="e#4204#4205#0" expanded="true" />
+            <element signature="e#4239#4240#0" expanded="true" />
+            <element signature="e#4268#4269#0" expanded="true" />
+            <element signature="e#4296#4297#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -418,9 +393,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -519,23 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/TrainingSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/Perceptron.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/SharedTypes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -543,22 +498,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/Layer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#776#777#0" expanded="true" />
-            <element signature="e#807#808#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/GraphicsProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="46" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+        <state relative-caret-position="255">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -567,29 +510,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="-268">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
           <folding>
-            <element signature="e#2960#2961#0" expanded="true" />
-            <element signature="e#3005#3006#0" expanded="true" />
-            <element signature="e#3043#3044#0" expanded="true" />
-            <element signature="e#3077#3078#0" expanded="true" />
-            <element signature="e#3125#3126#0" expanded="true" />
-            <element signature="e#3171#3172#0" expanded="true" />
-            <element signature="e#3219#3220#0" expanded="true" />
-            <element signature="e#3263#3264#0" expanded="true" />
-            <element signature="e#3309#3310#0" expanded="true" />
-            <element signature="e#3351#3352#0" expanded="true" />
-            <element signature="e#3451#3452#0" expanded="true" />
-            <element signature="e#3472#3473#0" expanded="true" />
+            <element signature="e#3778#3779#0" expanded="true" />
+            <element signature="e#3823#3824#0" expanded="true" />
+            <element signature="e#3861#3862#0" expanded="true" />
+            <element signature="e#3895#3896#0" expanded="true" />
+            <element signature="e#3943#3944#0" expanded="true" />
+            <element signature="e#3983#3984#0" expanded="true" />
+            <element signature="e#4031#4032#0" expanded="true" />
+            <element signature="e#4075#4076#0" expanded="true" />
+            <element signature="e#4121#4122#0" expanded="true" />
+            <element signature="e#4163#4164#0" expanded="true" />
+            <element signature="e#4204#4205#0" expanded="true" />
+            <element signature="e#4239#4240#0" expanded="true" />
+            <element signature="e#4268#4269#0" expanded="true" />
+            <element signature="e#4296#4297#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/Perceptron.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="66" column="57" lean-forward="true" selection-start-line="66" selection-start-column="57" selection-end-line="66" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/TrainingSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/Layer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="41" column="89" selection-start-line="41" selection-start-column="89" selection-end-line="41" selection-end-column="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#807#808#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fingerprint_recognition/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="70" column="87" selection-start-line="70" selection-start-column="87" selection-end-line="70" selection-end-column="87" />
+        <state relative-caret-position="269">
+          <caret line="130" column="14" selection-start-line="130" selection-start-column="14" selection-end-line="130" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -4,23 +4,23 @@ import java.util.List;
 
 public class TrainingSet {
 
-    private List<Integer> minutiaeList;
-    private int target;
+    private List<Integer> data;
+    private int[] targets;
 
-    public TrainingSet(List<Integer> minutiaeList, int target) {
-        this.minutiaeList = minutiaeList;
-        this.target = target;
+    public TrainingSet(List<Integer> data, int[] targets) {
+        this.data = data;
+        this.targets = targets;
     }
 
-    public List<Integer> getMinutiaeList() {
-        return minutiaeList;
+    public List<Integer> getData() {
+        return data;
     }
 
-    public int getTarget() {
-        return target;
+    public int[] getTargets() {
+        return targets;
     }
 
-    public void setTarget(int target) {
-        this.target = target;
+    public void setTargets(int[] targets) {
+        this.targets = targets;
     }
 }

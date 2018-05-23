@@ -27,32 +27,33 @@ public class Node {
     }
 
     public void calculateValues(Layer layer) {
-        netInputValue = 0;
-        for(int i = 0; i < inputWeights.length; i++) {
-            netInputValue += layer.getNodeList().get(i).getOutputValue() * inputWeights[i];
+        if(layerType != SharedTypes.LayerType.BIAS) {
+            netInputValue = 0;
+            for (int i = 0; i < inputWeights.length; i++) {
+                netInputValue += layer.getNodeList().get(i).getOutputValue() * inputWeights[i];
+            }
+            outputValue = Math.pow(Math.E, netInputValue) / (Math.pow(Math.E, netInputValue) + 1);
+            outputNetDerivative = outputValue * (1 - outputValue);
         }
-        outputValue = Math.pow(Math.E, netInputValue) / (Math.pow(Math.E, netInputValue) + 1);
-        outputNetDerivative = outputValue * (1 - outputValue);
     }
 
-    public void backpropagate(int outputIndex, double targetOne, double targetTwo, Perceptron perceptron) {
+    public void backpropagate(int outputIndex, double[] targetOutputs, Perceptron perceptron) {
         switch(layerType) {
             case INPUT:
                 break;
             case HIDDEN:
+
                 // For each weight in the node...
                 for (int j = 0; j < inputWeights.length; j++) {
-                    Node outputNodeOne = perceptron.getOutputLayer().getNodeList().get(0);
-                    Node outputNodeTwo = perceptron.getOutputLayer().getNodeList().get(1);
 
-                    // Calculate partial derivatives dEo1 / douthi and dE02 / douthi and their sum
-                    double errorOneHiddenOutputDerivative = outputNodeOne.getErrorOutputDerivative()
-                            * outputNodeOne.getOutputNetDerivative()
-                            * perceptron.getOutputLayer().getNodeList().get(0).getInputWeights()[index];
-                    double errorTwoHiddenOutputDerivative = outputNodeTwo.getErrorOutputDerivative()
-                            * outputNodeOne.getOutputNetDerivative()
-                            * perceptron.getOutputLayer().getNodeList().get(1).getInputWeights()[index];
-                    double totalErrorHiddenOutputDerivative = errorOneHiddenOutputDerivative + errorTwoHiddenOutputDerivative;
+                    // Calculate partial derivatives dEok / douthi and their sum
+                    double totalErrorHiddenOutputDerivative = 0;
+                    for(int k = 0; k < perceptron.getOutputLayer().getNodeList().size(); k++) {
+                        double errorHiddenOutputDerivative = perceptron.getOutputLayer().getNodeList().get(k).getErrorOutputDerivative()
+                                * perceptron.getOutputLayer().getNodeList().get(k).getOutputNetDerivative()
+                                * perceptron.getOutputLayer().getNodeList().get(k).getInputWeights()[index];
+                        totalErrorHiddenOutputDerivative += errorHiddenOutputDerivative;
+                    }
 
                     // Calculate partial derivative douthi / dnethi
                     outputNetDerivative = outputValue * (1 - outputValue);
@@ -71,14 +72,7 @@ public class Node {
                 for(int i = 0; i < inputWeights.length; i++) {
                     double netWeightDerivative = perceptron.getHiddenLayer().getNodeList().get(i).getOutputValue();
                     errorOutputDerivative = 0;
-                    switch (outputIndex) {
-                        case 1:
-                            errorOutputDerivative = outputValue - targetOne;
-                            break;
-                        case 2:
-                            errorOutputDerivative = outputValue - targetTwo;
-                            break;
-                    }
+                    errorOutputDerivative = outputValue - targetOutputs[outputIndex];
                     updatedWeights[i] = inputWeights[i] - perceptron.getLearningRate() *
                             errorOutputDerivative * outputNetDerivative * netWeightDerivative;
                 }
@@ -97,7 +91,7 @@ public class Node {
     }
 
     public void setOutputValue(double value) {
-        this.outputValue = outputValue;
+        this.outputValue = value;
     }
 
     public double getErrorOutputDerivative() {
@@ -110,5 +104,9 @@ public class Node {
 
     public double[] getInputWeights() {
         return inputWeights;
+    }
+
+    public int getIndex() {
+        return index;
     }
 }

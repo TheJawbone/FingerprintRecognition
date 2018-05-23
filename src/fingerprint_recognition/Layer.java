@@ -30,4 +30,17 @@ public class Layer {
     public List<Node> getNodeList() {
         return nodeList;
     }
+
+    public void inputTrainingSet(TrainingSet trainingSet) {
+        if(layerType == SharedTypes.LayerType.INPUT) {
+            int dataSum = 0;
+            for(int value : trainingSet.getData()) {
+                dataSum += value;
+            }
+            int dataAvg = dataSum / trainingSet.getData().size();
+            for (int j = 1; j < nodeList.size(); j++) {
+                nodeList.get(j).setOutputValue(trainingSet.getData().get(j - 1) - dataAvg);
+            }
+        }
+    }
 }
