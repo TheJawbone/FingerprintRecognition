@@ -31,7 +31,7 @@ public class Layer {
         return nodeList;
     }
 
-    public void inputTrainingSet(TrainingSet trainingSet) {
+    public void inputDataSet(DataSet trainingSet) {
         if(layerType == SharedTypes.LayerType.INPUT) {
             int dataSum = 0;
             for(int value : trainingSet.getData()) {

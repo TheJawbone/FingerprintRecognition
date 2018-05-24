@@ -8,7 +8,7 @@ public class Node {
     private double netInputValue;
     private double outputValue;
     private double outputNetDerivative;
-    double errorOutputDerivative;
+    private double errorOutputDerivative;
     private double[] netToWeightDerivatives;
     private double[] inputWeights;
     private double[] updatedWeights;

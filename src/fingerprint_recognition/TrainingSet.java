@@ -1,19 +1,21 @@
 package fingerprint_recognition;
 
+import javafx.scene.chart.PieChart;
+
 import java.util.List;
 
-public class TrainingSet {
+public class TrainingSet extends DataSet {
 
-    private List<Integer> data;
     private int[] targets;
 
     public TrainingSet(List<Integer> data, int[] targets) {
-        this.data = data;
+        super(data);
         this.targets = targets;
     }
 
-    public List<Integer> getData() {
-        return data;
+    public TrainingSet(DataSet dataSet) {
+        super(dataSet.getData());
+        targets = new int[] {0};
     }
 
     public int[] getTargets() {

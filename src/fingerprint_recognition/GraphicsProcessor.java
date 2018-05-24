@@ -1,40 +1,124 @@
 package fingerprint_recognition;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Graphics processor responsible for processing input images to a form which can be processed by the neural network.
+ */
 public class GraphicsProcessor {
 
+    /**
+     * Array containing pixel values of an image.
+     */
     private int[][] imageArray;
+
+    /**
+     * Array used to store information regarding ridge endings' occurrences.
+     */
     private int[][] ridgeEndingArray;
+
+    /**
+     * Array used to store information regarding ridge bifurcations' occurrences.
+     */
     private int[][] ridgeBifurcationArray;
+
+    /**
+     * List containing processed minutiae data from the input image.
+     */
     private List<Integer> minutiaeList;
+
+    /**
+     * Stores input image.
+     */
     private BufferedImage image;
-    private static final int imageWidth = 300;
-    private static final int imageHeight = 400;
-    private static final int windowWidth = 100;
-    private static final int windowHeight = 100;
 
-    public GraphicsProcessor(BufferedImage image) {
+    /**
+     * Width of the input image.
+     */
+    private int imageWidth;
 
-        this.image = image;
-        imageArray = new int[image.getWidth()][image.getHeight()];
-        ridgeEndingArray = new int[image.getWidth()][image.getHeight()];
-        ridgeBifurcationArray = new int[image.getWidth()][image.getHeight()];
-        //gaussBlur(5);
-        binarize();
-        for(int i = 0; i < 10; i++) {
-            thin();
+    /**
+     * Height of the input image.
+     */
+    private int imageHeight;
+
+    /**
+     * Width of the processing window.
+     */
+    private int windowWidth = 100;
+
+    /**
+     * Height of the processing window.
+     */
+    private int windowHeight = 100;
+
+    /**
+     * Processes images in a specified folder - extract minutiae, use them to generate data set for tne neural network
+     * and generate processed images with marked minutiae.
+     * @param sourcePath Path to folder containing source images.
+     * @param destinationPath Path to folder into which processed images will be written.
+     * @param startingIndex Index (name) of the first image.
+     * @param imageCount Number of images in the folder.
+     * @param windowWidth Width of the processing window.
+     * @param windowHeight Height of the processing window.
+     * @return Processed minutiae vector to be used as input to the neural network.
+     */
+    public List<DataSet> processBatch(String sourcePath, String destinationPath, int startingIndex, int imageCount, int windowWidth, int windowHeight) {
+
+        this.image = null;
+        List<DataSet> dataSet = new ArrayList<>();
+
+        // Process each image...
+        for(int i = startingIndex; i < imageCount + startingIndex; i++) {
+
+            // Load the image
+            try {
+                System.out.println("Opening image \"" + i + ".bmp\"...");
+                image = ImageIO.read(new File(sourcePath + i + ".bmp"));
+                imageWidth = image.getWidth();
+                imageHeight = image.getHeight();
+                imageArray = new int[imageWidth][imageHeight];
+                ridgeEndingArray = new int[imageWidth][imageHeight];
+                ridgeBifurcationArray = new int[imageWidth][imageHeight];
+                this.windowHeight = windowHeight;
+                this.windowWidth = windowWidth;
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+
+            // Process the image
+            System.out.println("Processing image...");
+            binarize();
+            for(int j = 0; j < 10; j++) {
+                thin();
+            }
+            findMinutiae();
+            generateMinutiaeArray();
+            dataSet.add(new DataSet(minutiaeList));
+            System.out.println("Image processed!\n");
+
+            // Write processed image to file
+            try {
+                ImageIO.write(image, "png",
+                        new File(destinationPath + i + ".png"));
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
         }
-        findMinutiae();
-        generateMinutiaeArray();
+        return dataSet;
     }
 
+    /**
+     * Binarizes the image, using an average value of all the pixels.
+     */
     private void binarize() {
 
-        // Transform the graphic to gray scale and store it in the array
-        // while calculating the sum of all the transformed pixels for later threshholding
+        // Calculate an average value of all the pixels
         int grayScaleSum = 0;
         for (int y = 0; y < image.getHeight(); y++) {
             for (int x = 0; x < image.getWidth(); x++) {
@@ -61,9 +145,12 @@ public class GraphicsProcessor {
         }
     }
 
+    /**
+     * Thins (skeletonizes) the image using the Zhang-Suen algorithm
+     */
     private void thin() {
 
-        // Clear the border pixels, instantiate thinned image
+        // Clear the border pixels
         for(int x = 0; x < image.getWidth(); x++) {
             imageArray[x][0] = -1;
             imageArray[x][image.getHeight() - 1] = -1;
@@ -126,6 +213,9 @@ public class GraphicsProcessor {
         }
     }
 
+    /**
+     * Detects minutiae on the image and stores information regarding them in corresponding arrays.
+     */
     private void findMinutiae() {
 
         for(int x = 1; x < image.getWidth() - 2; x++) {
@@ -148,6 +238,9 @@ public class GraphicsProcessor {
         drawMinutiaeMarkers();
     }
 
+    /**
+     * Draws markers for each minutiae on a processed image.
+     */
     private void drawMinutiaeMarkers() {
         for(int x = 1; x < image.getWidth() - 2; x++) {
             for (int y = 1; y < image.getHeight() - 2; y++) {
@@ -176,6 +269,9 @@ public class GraphicsProcessor {
         }
     }
 
+    /**
+     * Sums values of each minutiae array using processing window and then combines the arrays into one.
+     */
     private void generateMinutiaeArray() {
 
         minutiaeList = new ArrayList<>();
@@ -191,6 +287,13 @@ public class GraphicsProcessor {
         }
     }
 
+    /**
+     * Calculates a sum of a 2d subarray.
+     * @param x X position of the subarray in the array (subarray origin is it's top left corner).
+     * @param y Y position of the subarray in the array (subarray origin is it's top left corner).
+     * @param array Array for which the subarray sum is being calculated.
+     * @return Calculated sum of the subarray
+     */
     private int calculateSubarraySum(int x, int y, int[][] array) {
 
         int sum = 0;
@@ -202,33 +305,12 @@ public class GraphicsProcessor {
         return sum;
     }
 
-    private void gaussBlur (float radius) {
-
-        // Store original array
-        int [][] sourceArray = new int[image.getWidth()][];
-        for(int i = 0; i < imageArray.length; i++)
-            sourceArray[i] = imageArray[i].clone();
-
-        // Gaussian blur
-        int significantRadius = (int)Math.ceil(radius * 2.57);     // significant radius
-        for(int i = 1; i < image.getHeight() - 2; i++) {
-            for (int j = 1; j < image.getWidth() - 2; j++) {
-                int val = 0, wsum = 0;
-                for (int iy = i - significantRadius; iy < i + significantRadius + 1; iy++)
-                    for (int ix = j - significantRadius; ix < j + significantRadius + 1; ix++) {
-                        int x = Math.min(image.getWidth() - 1, Math.max(0, ix));
-                        int y = Math.min(image.getHeight() - 1, Math.max(0, iy));
-                        int dsq = (ix - j) * (ix - j) + (iy - i) * (iy - i);
-                        double wght = Math.exp(-dsq / (2 * radius * radius)) / (Math.PI * 2 * radius * radius);
-                        val += sourceArray[y][x] * wght;
-                        wsum += wght;
-                    }
-                imageArray[j][i] = Math.round(val / wsum);
-                image.setRGB(j, i, imageArray[j][i]);
-            }
-        }
-    }
-
+    /**
+     * Pixel comparison used in the Zhang-Suen algorithm.
+     * @param p1 Value of the first pixel.
+     * @param p2 Value of the second pixel.
+     * @return Result of the comparison.
+     */
     private int comparePixels(int p1, int p2) {
         if(p1 == 0 && p2 == 1) {
             return 1;
@@ -236,13 +318,4 @@ public class GraphicsProcessor {
             return 0;
         }
     }
-
-    public BufferedImage getImage() {
-        return image;
-    }
-
-    public List<Integer> getMinutiaeList() {
-        return minutiaeList;
-    }
-
 }
