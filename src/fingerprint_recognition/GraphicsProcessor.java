@@ -50,12 +50,17 @@ public class GraphicsProcessor {
     /**
      * Width of the processing window.
      */
-    private int windowWidth = 100;
+    private int windowWidth;
 
     /**
      * Height of the processing window.
      */
-    private int windowHeight = 100;
+    private int windowHeight;
+
+    /**
+     * Value that determines by how much the processing window will be moved in each iteration.
+     */
+    private int overlapFactor;
 
     /**
      * Processes images in a specified folder - extract minutiae, use them to generate data set for tne neural network
@@ -68,10 +73,10 @@ public class GraphicsProcessor {
      * @param windowHeight Height of the processing window.
      * @return Processed minutiae vector to be used as input to the neural network.
      */
-    public List<DataSet> processBatch(String sourcePath, String destinationPath, int startingIndex, int imageCount, int windowWidth, int windowHeight) {
+    public List<Data> processBatch(String sourcePath, String destinationPath, int startingIndex, int imageCount, int windowWidth, int windowHeight, int overlapFactor) {
 
         this.image = null;
-        List<DataSet> dataSet = new ArrayList<>();
+        List<Data> dataSet = new ArrayList<>();
 
         // Process each image...
         for(int i = startingIndex; i < imageCount + startingIndex; i++) {
@@ -87,6 +92,7 @@ public class GraphicsProcessor {
                 ridgeBifurcationArray = new int[imageWidth][imageHeight];
                 this.windowHeight = windowHeight;
                 this.windowWidth = windowWidth;
+                this.overlapFactor = overlapFactor;
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
@@ -99,7 +105,7 @@ public class GraphicsProcessor {
             }
             findMinutiae();
             generateMinutiaeArray();
-            dataSet.add(new DataSet(minutiaeList));
+            dataSet.add(new Data(minutiaeList));
             System.out.println("Image processed!\n");
 
             // Write processed image to file
@@ -275,12 +281,12 @@ public class GraphicsProcessor {
     private void generateMinutiaeArray() {
 
         minutiaeList = new ArrayList<>();
-        for(int x = 0; x < imageWidth - windowWidth + 1; x += windowWidth) {
+        for(int x = 0; x < imageWidth - windowWidth + 1; x += windowWidth / overlapFactor) {
             for(int y = 0; y < imageHeight - windowHeight + 1; y += windowHeight) {
                 minutiaeList.add(calculateSubarraySum(x, y, ridgeEndingArray));
             }
         }
-        for(int x = 0; x < imageWidth - windowWidth + 1; x += windowWidth) {
+        for(int x = 0; x < imageWidth - windowWidth + 1; x += windowWidth / overlapFactor) {
             for(int y = 0; y < imageHeight - windowHeight + 1; y += windowHeight) {
                 minutiaeList.add(calculateSubarraySum(x, y, ridgeBifurcationArray));
             }

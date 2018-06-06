@@ -3,11 +3,27 @@ package fingerprint_recognition;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Layer class represents a layer in a neural network.
+ */
 public class Layer {
 
+    /**
+     * List of nodes that the layer consists of.
+     */
     private List<Node> nodeList;
+
+    /**
+     * Type of the layer.
+     */
     private SharedTypes.LayerType layerType;
 
+    /**
+     * Constructor that initializes all the necessary fields.
+     * @param nodeCount Number of nodes in the layer.
+     * @param nodeInputCount Number of inputs for each node in the layer.
+     * @param layerType Type of layer.
+     */
     public Layer(int nodeCount, int nodeInputCount, SharedTypes.LayerType layerType) {
         this.layerType = layerType;
         nodeList = new ArrayList<>();
@@ -31,7 +47,11 @@ public class Layer {
         return nodeList;
     }
 
-    public void inputDataSet(DataSet trainingSet) {
+    /**
+     * Assigns input data to the layer if it's type is input.
+     * @param trainingSet
+     */
+    public void inputDataSet(Data trainingSet) {
         if(layerType == SharedTypes.LayerType.INPUT) {
             int dataSum = 0;
             for(int value : trainingSet.getData()) {

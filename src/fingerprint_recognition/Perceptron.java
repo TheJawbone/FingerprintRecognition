@@ -49,14 +49,15 @@ public class Perceptron {
      * @param trainingSets Set of training data.
      * @param errorThreshold Value specifying maximum value of error that can occur during training to deem the network
      *                       functional.
+     * @return Number of epochs it took to train the network
      */
-    public void train(List<TrainingSet> trainingSets, double errorThreshold) {
+    public int train(List<TrainingData> trainingSets, double errorThreshold) {
         double maxError = 1;
         double error;
         int epochCounter = 1;
         while(maxError > errorThreshold) {
             maxError = 0;
-            for (TrainingSet trainingSet : trainingSets) {
+            for (TrainingData trainingSet : trainingSets) {
                 propagateForwards(trainingSet);
                 error = propagateBackwards(trainingSet);
                 if(error > maxError) {
@@ -65,8 +66,7 @@ public class Perceptron {
             }
             epochCounter++;
         }
-        System.out.println("Network successfully trained after " + epochCounter
-                + " epochs at error threshold of " + errorThreshold + "!");
+        return epochCounter;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Perceptron {
      * @param testingSets List of testing sets containing processed fingerprint data.
      * @return Index of the fingerprint that matches the patter the most.
      */
-    public int test(List<DataSet> testingSets, double[] searchedValues) {
+    public int test(List<Data> testingSets, double[] searchedValues) {
 
         double smallestError = Double.MAX_VALUE;
         double error;
@@ -97,7 +97,7 @@ public class Perceptron {
      * Transfers data from the data set onto the input layer and propagate it through hidden and output layers.
      * @param dataSet
      */
-    private void propagateForwards(DataSet dataSet) {
+    private void propagateForwards(Data dataSet) {
 
         inputLayer.inputDataSet(dataSet);
         for (Node node : hiddenLayer.getNodeList()) {
@@ -113,7 +113,7 @@ public class Perceptron {
      * @param trainingSet Data used to train the network.
      * @return Combined value of error from all outputs.
      */
-    private double propagateBackwards(TrainingSet trainingSet) {
+    private double propagateBackwards(TrainingData trainingSet) {
 
         // Calculate outputs and errors
         int outputLayerSize = outputLayer.getNodeList().size();

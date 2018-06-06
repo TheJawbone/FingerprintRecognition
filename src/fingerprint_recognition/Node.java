@@ -2,22 +2,60 @@ package fingerprint_recognition;
 
 import java.util.Random;
 
+/**
+ * Mode class represents a single neuron in a neural network.
+ */
 public class Node {
 
+    /**
+     * Index representing position of the node in the layer.
+     */
     private int index;
+
+    /**
+     * Combined value from all of the node's inputs.
+     */
     private double netInputValue;
+
+    /**
+     * Output value of the node
+     */
     private double outputValue;
+
+    /**
+     * Derivative of output value over net input value.
+     */
     private double outputNetDerivative;
+
+    /**
+     * Derivative of total error over node's output value.
+     */
     private double errorOutputDerivative;
-    private double[] netToWeightDerivatives;
+
+    /**
+     * Array of node's input weights.
+     */
     private double[] inputWeights;
+
+    /**
+     * Array of node's updated weights (separate from input weights for the sake of backpropagation algorithm).
+     */
     private double[] updatedWeights;
+
+    /**
+     * Type of the layer that the node belongs to.
+     */
     private SharedTypes.LayerType layerType;
 
+    /**
+     * Constructor that initializes all the necessary fields.
+     * @param index Index of the node in it's layer.
+     * @param inputCount Number of node's inputs.
+     * @param layerType Type of layer that the node belongs to.
+     */
     public Node(int index, int inputCount, SharedTypes.LayerType layerType) {
         this.index = index;
         this.layerType = layerType;
-        netToWeightDerivatives = new double[inputCount];
         updatedWeights = new double[inputCount];
         inputWeights = new double[inputCount];
         Random generator = new Random();
@@ -26,6 +64,10 @@ public class Node {
         }
     }
 
+    /**
+     * Calculates net input value and output value.
+     * @param layer Layer to the left of the node's layer.
+     */
     public void calculateValues(Layer layer) {
         if(layerType != SharedTypes.LayerType.BIAS) {
             netInputValue = 0;
@@ -37,6 +79,12 @@ public class Node {
         }
     }
 
+    /**
+     * Implements the backpropagation algorithm.
+     * @param outputIndex Index of the output from which the backpropagation starts.
+     * @param targetOutputs Array of target values for each output.
+     * @param perceptron Perceptron that the node belongs to.
+     */
     public void backpropagate(int outputIndex, double[] targetOutputs, Perceptron perceptron) {
         switch(layerType) {
             case INPUT:
@@ -82,6 +130,9 @@ public class Node {
         }
     }
 
+    /**
+     * Updates input weights by assigning to them the value of updated weights.
+     */
     public void updateWeights() {
         inputWeights = updatedWeights;
     }
